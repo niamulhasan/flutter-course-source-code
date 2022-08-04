@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:routing_app/pages/details_page.dart';
 
 import 'power_badge.dart';
 
@@ -10,7 +11,11 @@ class PokemonCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => print("boo"),
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => DetailsPage()),
+        );
+      },
       child: Stack(
         children: [
           Container(
@@ -43,9 +48,12 @@ class PokemonCard extends StatelessWidget {
           Positioned(
             right: 0,
             bottom: 0,
-            child: Image.network(
-              "http://www.serebii.net/pokemongo/pokemon/001.png",
-              width: 100.0,
+            child: Hero(
+              tag: "pokecard1",
+              child: Image.network(
+                "http://www.serebii.net/pokemongo/pokemon/001.png",
+                width: 100.0,
+              ),
             ),
           )
         ],
