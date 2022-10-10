@@ -1,5 +1,5 @@
 Figma UI
-https://www.figma.com/file/8UBp4MEsDYjKJBAyZ64xhM/IP-INFO-APP?node-id=0%3A1
+https://www.figma.com/community/file/1161329828188358341
 
 
 Get User Ip
