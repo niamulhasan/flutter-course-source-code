@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:ip_info_app/data/ip_info_datasource.dart';
 import 'package:ip_info_app/widgets/my_button.dart';
 
 import 'widgets/info_text.dart';
 import 'widgets/info_title_text.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  TextEditingController ipInputFieldController = TextEditingController();
+
+  String ipAddress = "No IP";
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +40,11 @@ class MyApp extends StatelessWidget {
                 "assets/logo.png",
                 height: 120.0,
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30.0),
                 child: TextField(
-                  decoration: InputDecoration(
+                  controller: ipInputFieldController,
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(50.0),
@@ -54,6 +65,13 @@ class MyApp extends StatelessWidget {
                         "assets/my_ip.png",
                         width: 30.0,
                       ),
+                      onPressed: () async {
+                        String ipFormDataSource = await IpData.getMyIpAddress();
+                        ipInputFieldController.text = ipFormDataSource;
+                        setState(() {
+                          ipAddress = ipFormDataSource;
+                        });
+                      },
                     ),
                     SizedBox(width: 10.0),
                     MyButton(
@@ -62,6 +80,9 @@ class MyApp extends StatelessWidget {
                         "assets/get_info.png",
                         width: 30.0,
                       ),
+                      onPressed: () {
+                        print("My another callback");
+                      },
                     ),
                   ],
                 ),
@@ -78,7 +99,7 @@ class MyApp extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "192.167.98.63",
+                      "${ipAddress}",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 32.0,

@@ -8,12 +8,9 @@ class InfoText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Expanded(
-        child: Text(
-          "${text}",
-          style:
-              TextStyle(fontSize: 18.0, color: Colors.white.withOpacity(0.4)),
-        ),
+      child: Text(
+        "${text}",
+        style: TextStyle(fontSize: 18.0, color: Colors.white.withOpacity(0.4)),
       ),
     );
   }
