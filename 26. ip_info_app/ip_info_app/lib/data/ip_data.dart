@@ -17,4 +17,22 @@ class IpData {
     }
     return "No Ip Address Found";
   }
+
+  static Future<Map> getIpInformation(String ipAddress) async {
+    http.Response res =
+        await http.get(Uri.parse("https://ipinfo.io/$ipAddress/geo"));
+    if (res.statusCode == 200) {
+      return jsonDecode(res.body);
+    }
+    return {
+      "ip": "Failed to fetch ip",
+      "city": "Failed",
+      "region": "Failed",
+      "country": "Failed",
+      "loc": "Failed",
+      "org": "Failed",
+      "postal": "Failed",
+      "timezone": "Failed",
+    };
+  }
 }

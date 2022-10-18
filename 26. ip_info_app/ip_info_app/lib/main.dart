@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ip_info_app/data/ip_info_datasource.dart';
+import 'package:ip_info_app/data/ip_data.dart';
 import 'package:ip_info_app/widgets/my_button.dart';
 
 import 'widgets/info_text.dart';
@@ -18,6 +18,13 @@ class _MyAppState extends State<MyApp> {
   TextEditingController ipInputFieldController = TextEditingController();
 
   String ipAddress = "No IP";
+  String city = "None";
+  String region = "None";
+  String country = "None";
+  String latLong = "None";
+  String operator = "None";
+  String postalCode = "None";
+  String timeZone = "None";
 
   @override
   Widget build(BuildContext context) {
@@ -80,8 +87,18 @@ class _MyAppState extends State<MyApp> {
                         "assets/get_info.png",
                         width: 30.0,
                       ),
-                      onPressed: () {
-                        print("My another callback");
+                      onPressed: () async {
+                        Map ipInfo = await IpData.getIpInformation(
+                            ipInputFieldController.text);
+                        setState(() {
+                          city = ipInfo["city"];
+                          region = ipInfo["region"];
+                          country = ipInfo["country"];
+                          latLong = ipInfo["loc"];
+                          operator = ipInfo["org"];
+                          postalCode = ipInfo["postal"];
+                          timeZone = ipInfo["timezone"];
+                        });
                       },
                     ),
                   ],
@@ -134,13 +151,15 @@ class _MyAppState extends State<MyApp> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          InfoText(text: "City"),
-                          InfoText(text: "Region"),
-                          InfoText(text: "Country"),
-                          InfoText(text: "Latitude"),
-                          InfoText(text: "Operator"),
-                          InfoText(text: "Postal Code"),
-                          InfoText(text: "Time Zone"),
+                          InfoText(text: "$city"),
+                          InfoText(text: "$region"),
+                          InfoText(text: "$country"),
+                          InfoText(text: "$latLong"),
+                          InfoText(
+                              text:
+                                  "${operator.length > 20 ? operator.substring(0, 20) : operator}"),
+                          InfoText(text: "$postalCode"),
+                          InfoText(text: "$timeZone"),
                         ],
                       ),
                     ),
