@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import 'pages/login_page.dart';
+import 'router/route_manager.dart';
 
 void main() => runApp(const MyApp());
 
@@ -18,9 +19,9 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(create: (context) => AuthProvider())
         ],
-        child: const MaterialApp(
+        child: MaterialApp.router(
+          routerConfig: RouteManager.routeConfig,
           title: 'Material App',
-          home: LoginPage(),
         ),
       ),
     );
