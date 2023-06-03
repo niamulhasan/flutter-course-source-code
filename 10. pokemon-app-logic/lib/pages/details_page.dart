@@ -67,41 +67,120 @@ class DetailsPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(34.0),
                     ),
                     width: double.infinity,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            padding: const EdgeInsets.only(top: 60.0),
-                            height: double.infinity,
-                            child: Column(
-                              children: const [
-                                FeatureTitleText(text: "Height"),
-                                FeatureTitleText(text: "Weight"),
-                                FeatureTitleText(text: "Candy"),
-                                FeatureTitleText(text: "Egg")
-                              ],
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 2,
-                          child: Container(
-                            padding: const EdgeInsets.only(top: 60.0),
-                            height: double.infinity,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 700,
+                            child: Row(
                               children: [
-                                FeatureValueText(text: "${data!["height"]}"),
-                                FeatureValueText(text: "${data!["weight"]}"),
-                                FeatureValueText(text: "${data!["candy"]}"),
-                                FeatureValueText(text: "${data!["egg"]}"),
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    padding: const EdgeInsets.only(top: 60.0),
+                                    height: double.infinity,
+                                    child: Column(
+                                      children: const [
+                                        FeatureTitleText(text: "Height"),
+                                        FeatureTitleText(text: "Weight"),
+                                        FeatureTitleText(text: "Candy"),
+                                        FeatureTitleText(text: "Egg"),
+                                        FeatureTitleText(text: "More Field"),
+                                        FeatureTitleText(text: "More Field"),
+                                        FeatureTitleText(text: "More Field"),
+                                        FeatureTitleText(text: "More Field"),
+                                        FeatureTitleText(text: "More Field"),
+                                        FeatureTitleText(text: "More Field"),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Container(
+                                    padding: const EdgeInsets.only(top: 60.0),
+                                    height: double.infinity,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        FeatureValueText(
+                                            text: "${data!["height"]}"),
+                                        FeatureValueText(
+                                            text: "${data!["weight"]}"),
+                                        FeatureValueText(
+                                            text: "${data!["candy"]}"),
+                                        FeatureValueText(
+                                            text: "${data!["egg"]}"),
+                                        const FeatureValueText(
+                                            text: "More Data"),
+                                        const FeatureValueText(
+                                            text: "More Data"),
+                                        const FeatureValueText(
+                                            text: "More Data"),
+                                        const FeatureValueText(
+                                            text: "More Data"),
+                                        const FeatureValueText(
+                                            text: "More Data"),
+                                        const FeatureValueText(
+                                            text: "More Data"),
+                                      ],
+                                    ),
+                                  ),
+                                )
                               ],
                             ),
-                          ),
-                        )
-                      ],
+                          )
+                        ],
+                      ),
                     ),
+                    // child: Row(
+                    //   children: [
+                    //     Expanded(
+                    //       flex: 1,
+                    //       child: Container(
+                    //         padding: const EdgeInsets.only(top: 60.0),
+                    //         height: double.infinity,
+                    //         child: Column(
+                    //           children: const [
+                    //             FeatureTitleText(text: "Height"),
+                    //             FeatureTitleText(text: "Weight"),
+                    //             FeatureTitleText(text: "Candy"),
+                    //             FeatureTitleText(text: "Egg"),
+                    //             FeatureTitleText(text: "More Field"),
+                    //             FeatureTitleText(text: "More Field"),
+                    //             FeatureTitleText(text: "More Field"),
+                    //             FeatureTitleText(text: "More Field"),
+                    //             FeatureTitleText(text: "More Field"),
+                    //             FeatureTitleText(text: "More Field"),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //     ),
+                    //     Expanded(
+                    //       flex: 2,
+                    //       child: Container(
+                    //         padding: const EdgeInsets.only(top: 60.0),
+                    //         height: double.infinity,
+                    //         child: Column(
+                    //           crossAxisAlignment: CrossAxisAlignment.start,
+                    //           children: [
+                    //             FeatureValueText(text: "${data!["height"]}"),
+                    //             FeatureValueText(text: "${data!["weight"]}"),
+                    //             FeatureValueText(text: "${data!["candy"]}"),
+                    //             FeatureValueText(text: "${data!["egg"]}"),
+                    //             const FeatureValueText(text: "More Data"),
+                    //             const FeatureValueText(text: "More Data"),
+                    //             const FeatureValueText(text: "More Data"),
+                    //             const FeatureValueText(text: "More Data"),
+                    //             const FeatureValueText(text: "More Data"),
+                    //             const FeatureValueText(text: "More Data"),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //     )
+                    //   ],
+                    // ),
                   ),
                 )
               ],
